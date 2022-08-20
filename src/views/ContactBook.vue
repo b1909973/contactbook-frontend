@@ -18,9 +18,15 @@ v-model:activeIndex="activeIndex"
 <button class="btn btn-sm btn-primary" @click="refreshList()">
 <i class="fas fa-redo"></i> Làm mới
 </button>
+
+
 <button class="btn btn-sm btn-success" @click="goToAddContact">
-<i class="fas fa-plus"></i> Thêm mới
+<i class="fas fa-plus"></i> 
+Thêm
 </button>
+
+
+
 <button
 class="btn btn-sm btn-danger"
 @click="removeAllContacts"
@@ -57,6 +63,8 @@ import ContactCard from "@/components/ContactCard.vue";
 import InputSearch from "@/components/InputSearch.vue";
 import ContactList from "@/components/ContactList.vue";
 import ContactService from "@/services/contact.service";
+
+
 export default {
 components: {
 ContactCard,
@@ -109,10 +117,12 @@ this.contacts = await ContactService.getAll();
 console.log(error);
 }
 },
+
 refreshList() {
 this.retrieveContacts();
 this.activeIndex = -1;
 },
+
 async removeAllContacts() {
 if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
 try {
@@ -123,9 +133,11 @@ console.log(error);
 }
 }
 },
+
 goToAddContact() {
 this.$router.push({ name: "contact.add" });
 },
+
 },
 mounted() {
 this.refreshList();
